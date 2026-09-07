@@ -14,23 +14,23 @@
 
 # Nex-N2.5
 
-**An agentic model with Agentic Thinking.**
+**A next-generation family of agentic models built for long-horizon tasks in real-world environments.**
 
-Today, we are officially releasing and open-sourcing our next-generation model, **Nex-N2.5** — an agent model built for real-world productivity scenarios. With first-tier coding and agentic capabilities, Nex-N2.5 keeps driving complex, long-horizon tasks forward in real environments to deliver stable, end-to-end results.
+Today, Nex-AGI officially introduces **Nex-N2.5**, its next-generation family of agentic models.
 
-Over the past year, a paradigm shift led by Vibe Coding and Harness Engineering has been redefining the limits of LLM agents. From dialogue, to reasoning, to agents that execute long-horizon tasks with environmental feedback, the tasks models must handle keep growing harder, the contexts longer, and the environments more realistic. The core of next-generation model competition is no longer *whether a model can think*, but whether it can reliably and efficiently turn thinking into actions that are executable, verifiable, and iterable.
+Nex-N2.5 is available in three sizes: **mini**, **Pro**, and **Max**. Nex-N2.5-mini and Nex-N2.5-Pro continue to build on the multimodal foundations of Nex-N2, with focused improvements in computer use, web browsing, and visually grounded agentic capabilities. Nex-N2.5-Max is built on a 1.6-trillion-parameter, text-only Mixture-of-Experts (MoE) foundation model, marking our first complete post-training effort at trillion-parameter scale.
 
-Rather than treating reasoning, tool use, and environment execution as separate capabilities, Nex-N2.5 unifies them through an **Agentic Thinking** framework that connects requirement understanding, task planning, code implementation, environmental feedback, evaluation and debugging, and continuous iteration into a single closed loop. The framework has two parts:
+For long-horizon tasks in real-world environments, Nex-N2.5 further strengthens its ability to act continuously and self-correct through visual feedback. The models can operate computers and browsers, as well as autonomously execute and test programs. Vision is therefore no longer merely an input modality; it has become a critical interface through which an agent perceives its environment, verifies outcomes, and moves a task forward.
 
-- **Adaptive Thinking** lets the model decide on its own when to think and how deeply — executing simple actions quickly while reasoning thoroughly on critical decisions.
-- **Coherent Thinking** carries one consistent reasoning paradigm across general reasoning and diverse agentic tasks, staying consistent across tasks and modalities to enable stable capability transfer.
+Building on this foundation, we have further expanded the range of agent training environments, task types, and productivity scenarios, while completing systematic post-training at trillion-parameter scale for the first time. Through broader task coverage and richer environmental feedback, Nex-N2.5 delivers further gains in scientific research, knowledge work, and complex productivity tasks. This work also provides valuable practical experience for training agentic capabilities in even larger models.
 
-Across real agentic workflows — agentic coding, deep research, tool calling, and terminal execution — Nex-N2.5 reaches first-tier performance, with substantial gains over the previous-generation Nex-N1 on multiple authoritative benchmarks. In real productivity scenarios such as OpenClaw one-person-company workflows, end-to-end game development, and web and multimodal generation, it likewise demonstrates outstanding usability, robustness, and stability.
+By jointly advancing model training, infrastructure, and real-world agent scenarios, Nex-AGI aims to continue driving progress in agentic intelligence.
 
 ## Open Source
 
-In keeping with our commitment to open source, we are releasing both **Nex-N2.5-Pro** and **Nex-N2.5-mini** as open-source models starting today.
+Model weights for the Nex-N2.5 family will be released as open source, alongside hosted online services.
 
+- **Nex-N2.5-Max:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Max) | [ModelScope](https://www.modelscope.cn/models/nex-agi/Nex-N2.5-Max)
 - **Nex-N2.5-Pro:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Pro) | [ModelScope](https://www.modelscope.cn/models/nex-agi/Nex-N2.5-Pro)
 - **Nex-N2.5-mini:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-mini) | [ModelScope](https://www.modelscope.cn/models/nex-agi/Nex-N2.5-mini)
 - **Early Access:** [SiliconFlow](https://cloud.siliconflow.cn/me/models?target=nex-agi%2FNex-N2.5-Pro)
@@ -39,32 +39,85 @@ We welcome developers and enterprises to integrate and try Nex-N2.5 and share th
 
 ## Performance
 
-We evaluate Nex-N2.5 in real agentic workflows along three directions — agentic tasks, coding tasks, and general tasks — covering benchmarks across tool calling, search-based decision-making, software engineering, and terminal execution. Benchmark results will be added once the evaluations are complete.
+We evaluate Nex-N2.5 across coding, agentic workflows, computer use, and multimodal understanding.
 
-Nex-N2.5 ships in two variants, both post-trained on the Qwen3.5 series: **Nex-N2.5-Pro** (built on `Qwen3.5-397B-A17B`) and **Nex-N2.5-mini** (built on `Qwen3.5-35B-A3B-Base`), covering different latency and quality trade-offs. The table below lists the benchmarks and comparison models in our evaluation suite. All scores are pending.
+The table below compares **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite. All scores are pending.
 
-| Benchmark | **Nex-N2.5-mini** | **Nex-N2.5-Pro** | GPT-5.5 | Opus 4.7 | Kimi-K2.6 | GLM-5.1 | MiniMax M3 | DeepSeek-V4-Pro |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Agent** |  |  |  |  |  |  |  |  |
-| BrowseComp |  |  |  |  |  |  |  |  |
-| GDPval |  |  |  |  |  |  |  |  |
-| Toolathlon-Verified |  |  |  |  |  |  |  |  |
-| AutomationBench |  |  |  |  |  |  |  |  |
-| WildClawBench |  |  |  |  |  |  |  |  |
-| WideSearch |  |  |  |  |  |  |  |  |
-| TAU3 |  |  |  |  |  |  |  |  |
-| **Coding & SWE** |  |  |  |  |  |  |  |  |
-| SWE-Bench Pro |  |  |  |  |  |  |  |  |
-| Terminal-Bench 2.1 |  |  |  |  |  |  |  |  |
-| DeepSWE |  |  |  |  |  |  |  |  |
-| SWE-Bench Verified |  |  |  |  |  |  |  |  |
-| SWE Atlas QnA |  |  |  |  |  |  |  |  |
-| SWE Atlas RF |  |  |  |  |  |  |  |  |
-| SWE Atlas TW |  |  |  |  |  |  |  |  |
-| **General & Reasoning** |  |  |  |  |  |  |  |  |
-| GPQA Diamond |  |  |  |  |  |  |  |  |
-| IFEval |  |  |  |  |  |  |  |  |
-| Apex |  |  |  |  |  |  |  |  |
+<table>
+  <thead>
+    <tr>
+      <th align="left">Benchmark</th>
+      <th align="center">Nex-N2.5-mini</th>
+      <th align="center">Nex-N2.5-Pro</th>
+      <th align="center">Nex-N2.5-Max</th>
+      <th align="center">Claude Opus 5</th>
+      <th align="center">GPT-5.6 Sol</th>
+      <th align="center">Kimi K3</th>
+      <th align="center">GLM-5.3</th>
+      <th align="center">DeepSeek-V4-Pro-0813</th>
+      <th align="center">Qwen3.8-Max</th>
+    </tr>
+    <tr>
+      <th colspan="10" align="left">CODING</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Terminal-Bench 2.1</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>SWE-Bench Pro</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>DeepSWE v1.1</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+    <tr><th colspan="10" align="left">AGENTIC</th></tr>
+  </tbody>
+  <tbody>
+    <tr><td>AutomationBench v1.0.6 (Public)</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>Toolathlon-Verified</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>GDPval-AA</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>JobBench</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>BrowseComp</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+    <tr><th colspan="10" align="left">MULTIMODAL</th></tr>
+  </tbody>
+  <tbody>
+    <tr><td>OSWorld</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>OSWorld-2</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>WebTestBench</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>WebArena</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>OSWorld-G</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>ScreenSpot-Pro</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>Vision2Web</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>SWE-bench Multimodal</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>OmniDocBench</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+  <tbody>
+    <tr><td>CharXiv (Reasoning)</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td></tr>
+  </tbody>
+</table>
 
 ## Usage
 
