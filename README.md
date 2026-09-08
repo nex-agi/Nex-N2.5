@@ -188,12 +188,12 @@ python -m sglang.launch_server \
 
 ### Docker Deployment
 
-We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.18`**. The launch command is the same as above.
+We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.18-nex-patch`**. The launch command is the same as above.
 
 #### Nex-N2.5-Max
 
 ```bash
-# Multi-node (2 nodes). Run the same command on every node with:
+# Multi-node (2 nodes, 2 x H200). Run the same command on every node with:
 #   <node-rank> = 0 on the head node, 1 on the other node
 #   <node0-ip>  = IP of the head node (reachable from all others)
 docker run --gpus all --shm-size 32g --network host \
