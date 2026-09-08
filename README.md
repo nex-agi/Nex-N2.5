@@ -152,7 +152,7 @@ We also provide a prebuilt Docker image with our customized `sglang` fork preins
 #   <node0-ip>  = IP of the head node (reachable from all others)
 docker run --gpus all --shm-size 32g --network host \
   -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.18 \
+  nexagi/sglang:v0.5.18-nex-patch \
   python3 -m sglang.launch_server \
     --model-path /path/to/your/model \
     --trust-remote-code \
@@ -194,7 +194,7 @@ Single node with 8 × H100:
 docker run --gpus all --shm-size 32g --ipc=host \
   -p 30000:30000 \
   -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.12 \
+  nexagi/sglang:v0.5.18-nex-patch \
   python3 -m sglang.launch_server \
     --model-path /model \
     --tp 8 \
@@ -213,7 +213,7 @@ Single node with 2 × H100:
 docker run --gpus all --shm-size 32g --ipc=host \
   -p 30000:30000 \
   -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.12 \
+  nexagi/sglang:v0.5.18-nex-patch \
   python3 -m sglang.launch_server \
     --model-path /model \
     --tp 2 \
