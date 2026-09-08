@@ -7,7 +7,7 @@
 <div align="center">
 <p>
   💻 <a href="https://github.com/nex-agi/Nex-N2.5">GitHub</a>&nbsp; · &nbsp;
-  🤗 <a href="https://huggingface.co/nex-agi/Nex-N2.5-Pro">Hugging Face</a>&nbsp; · &nbsp;
+  🤗 <a href="https://huggingface.co/collections/nex-agi/nex-n25">Hugging Face</a>&nbsp; · &nbsp;
   🌐 <a href="https://nex-agi.com/">Website</a>&nbsp; · &nbsp;
   🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-pro">OpenRouter (Pro)</a>
 </p>
@@ -246,4 +246,24 @@ Nex-series models emit explicit reasoning traces. Add the `--reasoning-parser qw
 
 ```bash
 python -m sglang.launch_server --model-path /path/to/your/model --tool-call-parser qwen3_coder --reasoning-parser qwen3
+```
+
+### Thinking Control
+
+Nex-N2.5 models support three thinking modes, selected per request with the OpenAI-compatible `reasoning_effort` field:
+
+| `reasoning_effort` | Mode | Behavior |
+|---|---|---|
+| `"none"` | Thinking off | The model answers directly, without a reasoning trace. |
+| `"medium"` (default) | Adaptive thinking | The model decides per request whether, and how much, to reason. |
+| `"high"` | Thinking on | The model always produces a full reasoning trace before answering. |
+
+```bash
+curl http://localhost:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "nex-agi/Nex-N2.5-Pro",
+    "messages": [{"role": "user", "content": "How many prime numbers are there below 100?"}],
+    "reasoning_effort": "high"
+  }'
 ```
