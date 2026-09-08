@@ -145,7 +145,7 @@ We also provide a prebuilt Docker image with our customized `sglang` fork preins
 #### Nex-N2.5-Max
 
 ```bash
-# Multi-node (2 nodes, 2 x H200). Run the same command on every node with:
+# Multi-node (2 nodes, 16 x H200). Run the same command on every node with:
 #   <node-rank> = 0 on the head node, 1 on the other node
 #   <node0-ip>  = IP of the head node (reachable from all others)
 docker run --gpus all --shm-size 32g --network host \
@@ -184,9 +184,28 @@ docker run --gpus all --shm-size 32g --network host \
     --tool-call-parser qwen3_coder
 ```
 
+#### Nex-N2.5-Pro
+
+Single node with 8 × H100:
+
+```bash
+docker run --gpus all --shm-size 32g --ipc=host \
+  -p 30000:30000 \
+  -v /path/to/your/model:/model \
+  nexagi/sglang:v0.5.12 \
+  python3 -m sglang.launch_server \
+    --model-path /model \
+    --tp 8 \
+    --host 0.0.0.0 --port 30000 \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_coder \
+    --chat-template /path/to/nex-N2.5-Pro/chat-template.jinja \
+    --mamba-scheduler-strategy extra_buffer
+```
+
 #### Nex-N2.5-mini
 
-Single node with 2× H100:
+Single node with 2 × H100:
 
 ```bash
 docker run --gpus all --shm-size 32g --ipc=host \
@@ -199,6 +218,7 @@ docker run --gpus all --shm-size 32g --ipc=host \
     --host 0.0.0.0 --port 30000 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_coder \
+    --chat-template /path/to/nex-N2.5-mini/chat-template.jinja \
     --mamba-scheduler-strategy extra_buffer
 ```
 
