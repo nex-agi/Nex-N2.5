@@ -86,7 +86,7 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
     <tr><td>Toolathlon Verified</td><td align="center">54.6</td><td align="center">68.5</td><td align="center">74.7</td><td align="center"><b>76.5</b></td><td align="center">74.9</td><td align="center"><b>76.5</b></td><td align="center">73.0</td><td align="center">74.1</td><td align="center">72.5</td></tr>
   </tbody>
   <tbody>
-    <tr><td>GDPval-AA v2</td><td align="center">1446</td><td align="center">1628</td><td align="center">1713</td><td align="center"><b>1861</b></td><td align="center">1748</td><td align="center">1668</td><td align="center">1769</td><td align="center">1580</td><td align="center">1630</td></tr>
+    <tr><td>GDPval-AA v2</td><td align="center">1446</td><td align="center">1628</td><td align="center">1713</td><td align="center"><b>1831</b></td><td align="center">1711</td><td align="center">1675</td><td align="center">1763</td><td align="center">1580</td><td align="center">1717</td></tr>
   </tbody>
   <tbody>
     <tr><td>Job Bench</td><td align="center">28.5</td><td align="center">41.4</td><td align="center">53.6</td><td align="center"><b>65.7</b></td><td align="center">45.4</td><td align="center">52.9</td><td align="center">58.2</td><td align="center">54.1</td><td align="center">53.4</td></tr>
