@@ -45,7 +45,7 @@ We evaluate Nex-N2.5 across coding, agentic workflows, computer use, and multimo
 
 ![Nex-N2.5 Benchmark Overview: Text and Multimodal](./figures/Nex-N2.5-Benchmark-white.png)
 
-The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite. **Bold** marks the best result in each benchmark, including ties; — indicates unavailable data.
+The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite.<sup><a href="#benchmark-note-1">1</a>, <a href="#benchmark-note-2">2</a></sup> **Bold** marks the best result in each benchmark, including ties; — indicates unavailable data.
 
 ### Text Benchmarks
 
@@ -61,11 +61,11 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
       <th align="center">GPT-5.6 Sol</th>
       <th align="center">Kimi-K3</th>
       <th align="center">GLM-5.3</th>
-      <th align="center">DeepSeek-V4-Pro</th>
+      <th align="center">DeepSeek-V4-Pro-0813<sup><a href="#benchmark-note-4">4</a></sup></th>
       <th align="center">Qwen3.8-Max</th>
     </tr>
     <tr>
-      <th colspan="10" align="left">CODING</th>
+      <th colspan="10" align="left">CODING<sup><a href="#benchmark-note-3">3</a></sup></th>
     </tr>
   </thead>
   <tbody>
@@ -79,19 +79,19 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
     <tr><th colspan="10" align="left">AGENTIC</th></tr>
   </tbody>
   <tbody>
-    <tr><td>AutomationBench v1.0.6</td><td align="center">32.3</td><td align="center">44.2</td><td align="center">50.2</td><td align="center">50.3</td><td align="center">45.8</td><td align="center">46.7</td><td align="center">48.2</td><td align="center">43.2</td><td align="center"><b>50.8</b></td></tr>
+    <tr><td>AutomationBench v1.0.6<sup><a href="#benchmark-note-5">5</a></sup></td><td align="center">32.3</td><td align="center">44.2</td><td align="center">50.2</td><td align="center"><b>50.3</b></td><td align="center">45.8</td><td align="center">46.7</td><td align="center">48.2</td><td align="center">43.2</td><td align="center">39.8</td></tr>
   </tbody>
   <tbody>
-    <tr><td>Toolathlon Verified</td><td align="center">54.6</td><td align="center">68.5</td><td align="center">74.7</td><td align="center"><b>76.5</b></td><td align="center">74.9</td><td align="center"><b>76.5</b></td><td align="center">73.0</td><td align="center">74.1</td><td align="center">73.3</td></tr>
+    <tr><td>Toolathlon Verified</td><td align="center">54.6</td><td align="center">68.5</td><td align="center">74.7</td><td align="center"><b>76.5</b></td><td align="center">74.9</td><td align="center"><b>76.5</b></td><td align="center">73.0</td><td align="center">74.1</td><td align="center">72.5</td></tr>
   </tbody>
   <tbody>
-    <tr><td>GDPval-AA v2</td><td align="center">1446</td><td align="center">1628</td><td align="center">1713</td><td align="center"><b>1861</b></td><td align="center">1748</td><td align="center">1668</td><td align="center">1769</td><td align="center">1554</td><td align="center">1630</td></tr>
+    <tr><td>GDPval-AA v2</td><td align="center">1446</td><td align="center">1628</td><td align="center">1713</td><td align="center"><b>1861</b></td><td align="center">1748</td><td align="center">1668</td><td align="center">1769</td><td align="center">1580</td><td align="center">1630</td></tr>
   </tbody>
   <tbody>
-    <tr><td>Job Bench</td><td align="center">28.5</td><td align="center">41.4</td><td align="center">53.6</td><td align="center"><b>65.7</b></td><td align="center">45.4</td><td align="center">52.9</td><td align="center">58.2</td><td align="center">54.1</td><td align="center">64.0</td></tr>
+    <tr><td>Job Bench</td><td align="center">28.5</td><td align="center">41.4</td><td align="center">53.6</td><td align="center"><b>65.7</b></td><td align="center">45.4</td><td align="center">52.9</td><td align="center">58.2</td><td align="center">54.1</td><td align="center">53.4</td></tr>
   </tbody>
   <tbody>
-    <tr><td>BrowseComp</td><td align="center">83.4</td><td align="center">89.7</td><td align="center"><b>92.6</b></td><td align="center">90.8</td><td align="center">90.4</td><td align="center">91.2</td><td align="center">—</td><td align="center">—</td><td align="center">—</td></tr>
+    <tr><td>BrowseComp<sup><a href="#benchmark-note-6">6</a></sup></td><td align="center">83.4</td><td align="center">89.7</td><td align="center"><b>92.6</b></td><td align="center">90.8</td><td align="center">90.4</td><td align="center">91.2</td><td align="center">—</td><td align="center">—</td><td align="center">—</td></tr>
   </tbody>
 </table>
 
@@ -128,7 +128,7 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
     <tr><td>OSWorld-G</td><td align="center">82.9</td><td align="center"><b>87.4</b></td><td align="center">—</td><td align="center">76.8</td><td align="center">77.7</td><td align="center">79.6</td><td align="center">83.3</td><td align="center">59.4</td><td align="center">84.9</td></tr>
   </tbody>
   <tbody>
-    <tr><td>Vision2Web</td><td align="center">52.9</td><td align="center">68.2</td><td align="center">59.0</td><td align="center">—</td><td align="center"><b>79.8</b></td><td align="center">—</td><td align="center">—</td><td align="center">—</td><td align="center">75.1</td></tr>
+    <tr><td>Vision2Web<sup><a href="#benchmark-note-7">7</a></sup></td><td align="center">52.9</td><td align="center">68.2</td><td align="center">59.0</td><td align="center">—</td><td align="center"><b>79.8</b></td><td align="center">—</td><td align="center">—</td><td align="center">—</td><td align="center">75.1</td></tr>
   </tbody>
   <tbody>
     <tr><td>SWE-MM</td><td align="center">25.5</td><td align="center">38.2</td><td align="center">—</td><td align="center"><b>59.4</b></td><td align="center">40.2</td><td align="center">37.3</td><td align="center">20.6</td><td align="center">39.2</td><td align="center">39.2</td></tr>
@@ -137,6 +137,14 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
     <tr><td>OmniDoc</td><td align="center">89.7</td><td align="center">92.2</td><td align="center">91.6</td><td align="center">—</td><td align="center"><b>92.9</b></td><td align="center">91.1</td><td align="center">—</td><td align="center">—</td><td align="center">92.1</td></tr>
   </tbody>
 </table>
+
+<p id="benchmark-note-1"><sup>1</sup> <b>Score sources:</b> Where available, scores come from official benchmark leaderboards and the latest model-provider evaluation reports, including Kimi-K3, Qwen3.8-Max, GLM-5.3, and HY4. Results without a public source are from our own evaluations.</p>
+<p id="benchmark-note-2"><sup>2</sup> <b>Sampling parameters:</b> Our evaluations use <code>temperature = 0.7</code>, <code>top_p = 0.95</code>, and <code>top_k = 40</code>.</p>
+<p id="benchmark-note-3"><sup>3</sup> <b>Evaluation harness:</b> Coding tasks are evaluated with <a href="https://github.com/nex-agi/NexAU">NexAU</a>.</p>
+<p id="benchmark-note-4"><sup>4</sup> <b>DeepSeek-V4-Pro:</b> Our evaluations use the DeepSeek-V4-Pro-0813 version.</p>
+<p id="benchmark-note-5"><sup>5</sup> <b>AutomationBench:</b> We use the Public version.</p>
+<p id="benchmark-note-6"><sup>6</sup> <b>BrowseComp:</b> We apply the Summary context-compaction strategy when token usage exceeds 60% of the model's context window.</p>
+<p id="benchmark-note-7"><sup>7</sup> <b>Vision2Web:</b> We report the average score across the Frontend, Webpage, and Website categories, using Gemini-3.5-Flash as the VLM judge and GLM-5V-Turbo (Claude Code) as the GUI agent.</p>
 
 ## Usage
 
@@ -232,6 +240,30 @@ For the best generation quality, we recommend the following sampling parameters:
 - `top_p`: 0.95
 - `top_k`: 40
 
+### Thinking Modes
+
+Use `reasoning_effort` to control the thinking behavior of Nex-N2.5:
+
+| `reasoning_effort` | Mode | Behavior |
+| --- | --- | --- |
+| `"none"` | Non-thinking | Respond directly without a reasoning trace. |
+| `"medium"` (default) | Adaptive thinking | Let the model decide whether and how much to think before responding. |
+| `"high"` | Thinking | Always enable thinking before responding. |
+
+For adaptive thinking, set `reasoning_effort` to `"medium"` in your OpenAI-compatible Chat Completions request. Replace `<served-model-name>` with the model name exposed by your server:
+
+```json
+{
+  "model": "<served-model-name>",
+  "messages": [
+    {"role": "user", "content": "Explain how binary search works."}
+  ],
+  "reasoning_effort": "medium"
+}
+```
+
+The chat template uses `reasoning_effort`; parameters such as `enable_thinking` and `thinking_mode` require gateway-specific translation.
+
 ### Function Calling
 
 Nex-series models support robust function-calling capabilities. To enable function calling, add the `--tool-call-parser qwen3_coder` flag when launching the server:
@@ -242,28 +274,9 @@ python -m sglang.launch_server --model-path /path/to/your/model --tool-call-pars
 
 ### Reasoning Parser
 
-Nex-series models emit explicit reasoning traces. Add the `--reasoning-parser qwen3` flag to parse the reasoning content separately from the final response. It can be combined with the function-calling parser above:
+When the model produces a reasoning trace, configure SGLang to separate it from the final response:
 
-```bash
-python -m sglang.launch_server --model-path /path/to/your/model --tool-call-parser qwen3_coder --reasoning-parser qwen3
-```
+- **Nex-N2.5-mini and Nex-N2.5-Pro:** `--reasoning-parser qwen3`
+- **Nex-N2.5-Max:** `--reasoning-parser deepseek-r1`
 
-### Thinking Control
-
-Nex-N2.5 models support three thinking modes, selected per request with the OpenAI-compatible `reasoning_effort` field:
-
-| `reasoning_effort` | Mode | Behavior |
-|---|---|---|
-| `"none"` | Thinking off | The model answers directly, without a reasoning trace. |
-| `"medium"` (default) | Adaptive thinking | The model decides per request whether, and how much, to reason. |
-| `"high"` | Thinking on | The model always produces a full reasoning trace before answering. |
-
-```bash
-curl http://localhost:30000/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "nex-agi/Nex-N2.5-Pro",
-    "messages": [{"role": "user", "content": "How many prime numbers are there below 100?"}],
-    "reasoning_effort": "high"
-  }'
-```
+The deployment commands above include the appropriate reasoning parser and `--tool-call-parser qwen3_coder`. The parser extracts reasoning content; use `reasoning_effort` to select the thinking mode.
