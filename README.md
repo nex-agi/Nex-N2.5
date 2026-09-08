@@ -138,22 +138,6 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
 
 ## Usage
 
-### Local Deployment
-
-> **Note:** For the best performance with Nex-series models, we recommend serving them with our customized `sglang` fork.
-
-First, install our `sglang` fork:
-
-```bash
-# Use the customized `sglang` fork
-git clone https://github.com/nex-agi/sglang.git
-cd sglang
-
-# Install the python packages
-pip install --upgrade pip
-pip install -e "python"
-```
-
 #### Nex-N2.5-Pro
 
 Launch the server (example on two 8× H100 servers with CUDA 13.0):
