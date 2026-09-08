@@ -138,38 +138,6 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
 
 ## Usage
 
-#### Nex-N2.5-Pro
-
-Launch the server (example on two 8× H100 servers with CUDA 13.0):
-
-```bash
-# Multi-node (2 nodes). Run the same command on every node with:
-#   <node-rank> = 0 on the head node, 1 on the other node
-#   <node0-ip>  = IP of the head node (reachable from all others)
-python -m sglang.launch_server \
-  --model-path /path/to/your/model  \
-  --tp 16 \
-  --nnodes 2 \
-  --node-rank <node-rank> \
-  --dist-init-addr <node0-ip>:20000 \
-  --reasoning-parser qwen3 \
-  --tool-call-parser qwen3_coder \
-  --mamba-scheduler-strategy extra_buffer
-```
-
-#### Nex-N2.5-mini
-
-Launch the server (example on one 2× H100 server with CUDA 13.0):
-
-```bash
-python -m sglang.launch_server \
-  --model-path /path/to/your/model  \
-  --tp 2 \
-  --reasoning-parser qwen3 \
-  --tool-call-parser qwen3_coder \
-  --mamba-scheduler-strategy extra_buffer
-```
-
 ### Docker Deployment
 
 We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.18-nex-patch`**. The launch command is the same as above.
