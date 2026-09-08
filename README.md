@@ -188,9 +188,9 @@ python -m sglang.launch_server \
 
 ### Docker Deployment
 
-We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.12`**. The launch command is the same as above.
+We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.18`**. The launch command is the same as above.
 
-#### Nex-N2.5-Pro
+#### Nex-N2.5-Max
 
 ```bash
 # Multi-node (2 nodes). Run the same command on every node with:
@@ -198,17 +198,43 @@ We also provide a prebuilt Docker image with our customized `sglang` fork preins
 #   <node0-ip>  = IP of the head node (reachable from all others)
 docker run --gpus all --shm-size 32g --network host \
   -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.12 \
+  nexagi/sglang:v0.5.18 \
   python3 -m sglang.launch_server \
-    --model-path /model \
-    --tp 16 \
+    --model-path /path/to/your/model \
+    --trust-remote-code \
+    --host 0.0.0.0 \
+    --port 8000 \
     --nnodes 2 \
-    --node-rank <node-rank> \
-    --dist-init-addr <node0-ip>:20000 \
-    --host 0.0.0.0 --port 30000 \
-    --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_coder \
-    --mamba-scheduler-strategy extra_buffer
+    --node-rank "${NODE_RANK}" \
+    --dist-init-addr "${MASTER_ADDR}:5000" \
+    --tp 16 \
+    --pp-size 1 \
+    --dp 1 \
+    --ep-size 16 \
+    --attention-backend dsv4 \
+    --kv-cache-dtype fp8_e4m3 \
+    --page-size 256 \
+    --moe-a2a-backend deepep \
+    --moe-runner-backend deep_gemm \
+    --moe-dense-tp-size 1 \
+    --deepep-mode auto \
+    --context-length 262144 \
+    --mem-fraction-static 0.84 \
+    --chunked-prefill-size 8192 \
+    --enable-mixed-chunk \
+    --disable-overlap-schedule \
+    --max-running-requests 64 \
+    --cuda-graph-max-bs-decode 64 \
+    --cuda-graph-backend-decode full \
+    --cuda-graph-backend-prefill disabled \
+    --enable-hierarchical-cache \
+    --hicache-ratio 4 \
+    --hicache-write-policy write_through \
+    --hicache-io-backend direct \
+    --hicache-mem-layout page_first_direct \
+    --chat-template /path/to/nex-n2.5-max/chat_template.jinja \
+    --reasoning-parser deepseek-r1 \
+    --tool-call-parser qwen3_coder
 ```
 
 #### Nex-N2.5-mini
