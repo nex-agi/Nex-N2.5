@@ -45,7 +45,7 @@ We evaluate Nex-N2.5 across coding, agentic workflows, computer use, and multimo
 
 ![Nex-N2.5 Benchmark Overview: Text and Multimodal](./figures/Nex-N2.5-Benchmark-white.png)
 
-The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite.<sup><a href="#benchmark-note-1">1</a>, <a href="#benchmark-note-2">2</a></sup> **Bold** marks the best result in each benchmark, including ties; — indicates unavailable data.
+The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite.<sup><a href="#benchmark-note-1">1</a>, <a href="#benchmark-note-2">2</a></sup> **Bold** marks the best result in each benchmark, including ties; — indicates unavailable data.<sup><a href="#benchmark-note-10">10</a></sup>
 
 ### Text Benchmarks
 
@@ -113,16 +113,16 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
     </tr>
   </thead>
   <tbody>
-    <tr><td>OSWorld-Verified</td><td align="center">71.2</td><td align="center">82.2</td><td align="center">75.2</td><td align="center">83.4</td><td align="center">83.2</td><td align="center">84.8</td><td align="center">62.3</td><td align="center">76.7</td><td align="center"><b>86.1</b></td></tr>
+    <tr><td>OSWorld-Verified<sup><a href="#benchmark-note-8">8</a></sup></td><td align="center">71.2</td><td align="center">82.2</td><td align="center">75.2</td><td align="center">83.4</td><td align="center">83.2</td><td align="center">84.8</td><td align="center">62.3</td><td align="center">76.7</td><td align="center"><b>86.1</b></td></tr>
   </tbody>
   <tbody>
     <tr><td>OSWorld-2</td><td align="center">30.5</td><td align="center">56.4</td><td align="center">22.3</td><td align="center"><b>68.3</b></td><td align="center">62.7</td><td align="center">58.3</td><td align="center">—</td><td align="center">—</td><td align="center">46.7</td></tr>
   </tbody>
   <tbody>
-    <tr><td>WebTest</td><td align="center">48.6</td><td align="center">52.8</td><td align="center">—</td><td align="center">—</td><td align="center"><b>54.0</b></td><td align="center">—</td><td align="center">—</td><td align="center">—</td><td align="center">52.3</td></tr>
+    <tr><td>WebTest<sup><a href="#benchmark-note-8">8</a>, <a href="#benchmark-note-9">9</a></sup></td><td align="center">48.6</td><td align="center">52.8</td><td align="center">—</td><td align="center">—</td><td align="center"><b>54.0</b></td><td align="center">—</td><td align="center">—</td><td align="center">—</td><td align="center">52.3</td></tr>
   </tbody>
   <tbody>
-    <tr><td>WebArena-Verified</td><td align="center">63.4</td><td align="center">67.6</td><td align="center">—</td><td align="center">—</td><td align="center">69.7</td><td align="center"><b>71.6</b></td><td align="center">—</td><td align="center">62.3</td><td align="center">66.8</td></tr>
+    <tr><td>WebArena-Verified<sup><a href="#benchmark-note-8">8</a></sup></td><td align="center">63.4</td><td align="center">67.6</td><td align="center">—</td><td align="center">—</td><td align="center">69.7</td><td align="center"><b>71.6</b></td><td align="center">—</td><td align="center">62.3</td><td align="center">66.8</td></tr>
   </tbody>
   <tbody>
     <tr><td>OSWorld-G</td><td align="center">82.9</td><td align="center"><b>87.4</b></td><td align="center">—</td><td align="center">76.8</td><td align="center">77.7</td><td align="center">79.6</td><td align="center">83.3</td><td align="center">59.4</td><td align="center">84.9</td></tr>
@@ -138,13 +138,16 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
   </tbody>
 </table>
 
-<p id="benchmark-note-1"><sup>1</sup> <b>Score sources:</b> Where available, scores come from official benchmark leaderboards and the latest model-provider evaluation reports, including Kimi-K3, Qwen3.8-Max, GLM-5.3, and HY4. Results without a public source are from our own evaluations.</p>
+<p id="benchmark-note-1"><sup>1</sup> <b>Score sources:</b> Where available, scores are drawn from official benchmark leaderboards and the latest evaluation reports published by model providers, including the Kimi-K3, Qwen3.8-Max, GLM-5.3, and HY4 reports. Results without a public source are obtained through our own evaluations.</p>
 <p id="benchmark-note-2"><sup>2</sup> <b>Sampling parameters:</b> Our evaluations use <code>temperature = 0.7</code>, <code>top_p = 0.95</code>, and <code>top_k = 40</code>.</p>
-<p id="benchmark-note-3"><sup>3</sup> <b>Evaluation harness:</b> Coding tasks are evaluated with <a href="https://github.com/nex-agi/NexAU">NexAU</a>.</p>
+<p id="benchmark-note-3"><sup>3</sup> <b>Evaluation harness:</b> Coding tasks are evaluated using the <a href="https://github.com/nex-agi/NexAU">NexAU</a> harness.</p>
 <p id="benchmark-note-4"><sup>4</sup> <b>DeepSeek-V4-Pro:</b> Our evaluations use the DeepSeek-V4-Pro-0813 version.</p>
 <p id="benchmark-note-5"><sup>5</sup> <b>AutomationBench:</b> We use the Public version.</p>
-<p id="benchmark-note-6"><sup>6</sup> <b>BrowseComp:</b> We apply the Summary context-compaction strategy when token usage exceeds 60% of the model's context window.</p>
-<p id="benchmark-note-7"><sup>7</sup> <b>Vision2Web:</b> We report the average score across the Frontend, Webpage, and Website categories, using Gemini-3.5-Flash as the VLM judge and GLM-5V-Turbo (Claude Code) as the GUI agent.</p>
+<p id="benchmark-note-6"><sup>6</sup> <b>BrowseComp:</b> We apply the Summary context-compaction strategy when the token usage exceeds 60% of the model’s context window.</p>
+<p id="benchmark-note-7"><sup>7</sup> <b>Vision2Web:</b> We report the average score across the Frontend, Webpage, and Website categories, with Gemini-3.5-Flash as the VLM judge and GLM-5V-Turbo (Claude Code) as the GUI agent.</p>
+<p id="benchmark-note-8"><sup>8</sup> Computer-use and browser-use benchmarks, including OSWorld, WebTest, and WebArena, are evaluated using our NexCUA harness. Grounding coordinates are normalized to a 0–1000 scale. The NexCUA project will be open-sourced soon.</p>
+<p id="benchmark-note-9"><sup>9</sup> <b>WebTestBench:</b> These results are evaluated in <b>oracle mode</b>, using the ground-truth checklist to assess defect detection only, without checklist generation.</p>
+<p id="benchmark-note-10"><sup>10</sup> <b>Notation:</b> Bold marks the best result in each benchmark, including ties; — indicates unavailable data.</p>
 
 ## Usage
 
