@@ -9,7 +9,8 @@
   💻 <a href="https://github.com/nex-agi/Nex-N2.5">GitHub</a>&nbsp; · &nbsp;
   🤗 <a href="https://huggingface.co/collections/nex-agi/nex-n25">Hugging Face</a>&nbsp; · &nbsp;
   🌐 <a href="https://nex-agi.com/">Website</a>&nbsp; · &nbsp;
-  🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-pro">OpenRouter (Pro)</a>
+  🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-pro">OpenRouter (Pro)</a>&nbsp; · &nbsp;
+  🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-mini">OpenRouter (mini)</a>
 </p>
 </div>
 
@@ -34,7 +35,7 @@ Model weights for the Nex-N2.5 family will be released as open source, alongside
 - **Nex-N2.5-Max:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Max) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Max)
 - **Nex-N2.5-Pro:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Pro) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Pro)
 - **Nex-N2.5-mini:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-mini) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-mini)
-- **Hosted Access:** [OpenRouter (Nex-N2.5-Pro)](https://openrouter.ai/nex-agi/nex-n2.5-pro)
+- **Hosted Access:** [OpenRouter (Nex-N2.5-Pro)](https://openrouter.ai/nex-agi/nex-n2.5-pro) | [OpenRouter (Nex-N2.5-mini)](https://openrouter.ai/nex-agi/nex-n2.5-mini)
 - **Websites:** [Global](https://nex-agi.com/)
 
 We welcome developers and enterprises to integrate and try Nex-N2.5 and share their feedback.
