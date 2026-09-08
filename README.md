@@ -43,6 +43,8 @@ We welcome developers and enterprises to integrate and try Nex-N2.5 and share th
 
 We evaluate Nex-N2.5 across coding, agentic workflows, computer use, and multimodal understanding.
 
+![Nex-N2.5 Benchmark Overview: Text and Multimodal](./figures/Nex-N2.5-Benchmark-white.png)
+
 The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max** with leading models across our evaluation suite. **Bold** marks the best result in each benchmark, including ties; — indicates unavailable data.
 
 ### Text Benchmarks
