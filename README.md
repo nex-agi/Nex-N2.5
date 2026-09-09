@@ -1,44 +1,98 @@
 <div align="center">
-<img src="./figures/NEX_logo.svg" width="20%"/>
-</div>
-
----
-
-<div align="center">
-<p>
-  💻 <a href="https://github.com/nex-agi/Nex-N2.5">GitHub</a>&nbsp; · &nbsp;
-  🤗 <a href="https://huggingface.co/collections/nex-agi/nex-n25">Hugging Face</a>&nbsp; · &nbsp;
-  🌐 <a href="https://nex-agi.com/">Website</a>&nbsp; · &nbsp;
-  🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-pro">OpenRouter (Pro)</a>&nbsp; · &nbsp;
-  🔀 <a href="https://openrouter.ai/nex-agi/nex-n2.5-mini">OpenRouter (mini)</a>
-</p>
-</div>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./figures/NEX_logo-dark.svg">
+    <img src="./figures/NEX_logo.svg" width="180" alt="Nex-AGI">
+  </picture>
 
 # Nex-N2.5
 
-**A next-generation family of agentic models built for long-horizon tasks in real-world environments.**
+**Build agents that browse, code, and use computers.**
 
-Today, Nex-AGI officially introduces **Nex-N2.5**, its next-generation family of agentic models.
+Multimodal mini & Pro · 1.6T-parameter text-only Max · Long-horizon agent tasks
 
-Nex-N2.5 is available in three sizes: **mini**, **Pro**, and **Max**. Nex-N2.5-mini and Nex-N2.5-Pro continue to build on the multimodal foundations of Nex-N2, with focused improvements in computer use, web browsing, and visually grounded agentic capabilities. Nex-N2.5-Max is built on a 1.6-trillion-parameter, text-only Mixture-of-Experts (MoE) foundation model, marking our first complete post-training effort at trillion-parameter scale.
+[![Try Pro on OpenRouter](https://img.shields.io/badge/Try_Pro-OpenRouter-2563EB?style=for-the-badge)](https://openrouter.ai/nex-agi/nex-n2.5-pro:free) [![Try mini on OpenRouter](https://img.shields.io/badge/Try_mini-OpenRouter-2563EB?style=for-the-badge)](https://openrouter.ai/nex-agi/nex-n2.5-mini:free)
 
-For long-horizon tasks in real-world environments, Nex-N2.5 further strengthens its ability to act continuously and self-correct through visual feedback. The models can operate computers and browsers, as well as autonomously execute and test programs. Vision is therefore no longer merely an input modality; it has become a critical interface through which an agent perceives its environment, verifies outcomes, and moves a task forward.
+[Model weights](#open-source) · [API quickstart](#quick-start) · [Benchmarks](#performance) · [Self-hosting](#usage) · [Website](https://nex-agi.com/)
 
-Building on this foundation, we have further expanded the range of agent training environments, task types, and productivity scenarios, while completing systematic post-training at trillion-parameter scale for the first time. Through broader task coverage and richer environmental feedback, Nex-N2.5 delivers further gains in scientific research, knowledge work, and complex productivity tasks. This work also provides valuable practical experience for training agentic capabilities in even larger models.
+**English** | [简体中文](./README_zh-CN.md)
 
-By jointly advancing model training, infrastructure, and real-world agent scenarios, Nex-AGI aims to continue driving progress in agentic intelligence.
+⭐ **Building agents? [Star this repo](https://github.com/nex-agi/Nex-N2.5) to keep the models, benchmarks, and deployment guides handy.**
+
+</div>
+
+Nex-N2.5 is Nex-AGI's model family for tasks that take many steps: searching the web, working with software, writing and testing code, and using tools. **mini and Pro** use visual feedback to interpret interfaces and check their actions. **Max** brings a 1.6-trillion-parameter Mixture-of-Experts (MoE) foundation to text-based coding, research, and tool use.
+
+## Highlights
+
+| Web research | GUI grounding | Computer use |
+| :---: | :---: | :---: |
+| **92.6** · BrowseComp | **87.4** · OSWorld-G | **82.2** · OSWorld-Verified |
+| Nex-N2.5-Max | Nex-N2.5-Pro | Nex-N2.5-Pro |
+
+Selected scores from the evaluations reported in this repository. Max on BrowseComp and Pro on OSWorld-G have the highest reported scores **among the models listed in our tables**. See the [full results and evaluation settings](#performance) for comparisons, harnesses, and score sources.
+
+- **Build computer and browser agents.** mini and Pro combine visual understanding with actions and feedback, supporting workflows that need to inspect an interface and adjust the next step.
+- **Connect coding and research tools.** The family supports function calling; coding evaluations use the open-source [NexAU agent framework](https://github.com/nex-agi/NexAU).
+- **Try a hosted model or deploy weights.** Start with Pro or mini on OpenRouter. Download mini or Max for self-hosting; see the [release status](#open-source) for Pro.
+
+## Quick start
+
+### Try it in your browser
+
+Open **[Nex-N2.5-Pro](https://openrouter.ai/nex-agi/nex-n2.5-pro:free)** or **[Nex-N2.5-mini](https://openrouter.ai/nex-agi/nex-n2.5-mini:free)** on OpenRouter. The hosted routes are currently listed as free; an OpenRouter account and its usage limits apply.
+
+Try a coding task: *“Review this function for edge cases, propose a fix, and write tests that would catch the bug.”* Paste your function after the prompt.
+
+### Make your first API call
+
+Create an [OpenRouter API key](https://openrouter.ai/settings/keys), set `OPENROUTER_API_KEY`, and run this in Bash:
+
+```bash
+export OPENROUTER_API_KEY="your-api-key"
+
+curl --fail-with-body https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "nex-agi/nex-n2.5-pro:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Write a Python function that merges overlapping intervals, with tests for empty input, touching intervals, and nested intervals."
+      }
+    ],
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "top_k": 40,
+    "reasoning": {"effort": "medium"}
+  }'
+```
+
+To try mini, change `model` to `nex-agi/nex-n2.5-mini:free`. Model IDs and route availability can change; check the [OpenRouter model catalog](https://openrouter.ai/api/v1/models). See the [API guide](https://openrouter.ai/docs/quickstart) for other languages and streaming.
+
+For tasks that actually browse, click, or execute code, connect the model to an agent runtime and the relevant tools. A chat request alone does not run those actions. [NexAU](https://github.com/nex-agi/NexAU) is the framework used for our coding evaluations; NexCUA, our computer-use evaluation harness, is planned for open-source release.
+
+## Choose a model
+
+| Model | Designed for | Native inputs | Hosted access |
+| --- | --- | --- | --- |
+| **Nex-N2.5-mini** | Computer and browser agents with a smaller self-hosting footprint | Text + images | [OpenRouter](https://openrouter.ai/nex-agi/nex-n2.5-mini:free) |
+| **Nex-N2.5-Pro** | Visual agent workflows, GUI grounding, and computer use | Text + images | [OpenRouter](https://openrouter.ai/nex-agi/nex-n2.5-pro:free) |
+| **Nex-N2.5-Max** | Text-based research, coding, and tool use at 1.6T-parameter scale | Text only | Self-host |
+
+Hosted providers may expose fewer input modalities than the underlying model. As of **2026-09-09**, OpenRouter lists Pro with text and image inputs, and mini with text input only.
 
 ## Open Source
 
-Model weights for the Nex-N2.5 family will be released as open source, alongside hosted online services.
+Release status checked on **2026-09-09** against the Hugging Face file listings. The model cards list **Apache-2.0**; consult each model card and its license when using the weights.
 
-- **Nex-N2.5-Max:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Max) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Max)
-- **Nex-N2.5-Pro:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Pro) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Pro)
-- **Nex-N2.5-mini:** [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-mini) | [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-mini)
-- **Hosted Access:** [OpenRouter (Nex-N2.5-Pro)](https://openrouter.ai/nex-agi/nex-n2.5-pro) | [OpenRouter (Nex-N2.5-mini)](https://openrouter.ai/nex-agi/nex-n2.5-mini)
-- **Websites:** [Global](https://nex-agi.com/)
+| Model | Hugging Face status | Downloads / model card | Reference deployment |
+| --- | --- | --- | --- |
+| **mini** | Weights available | [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-mini) · [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-mini) | 1 node · 2 × H100 |
+| **Pro** | Model card available; weights pending | [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Pro) · [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Pro) | 1 node · 8 × H100 |
+| **Max** | Weights available | [Hugging Face](https://huggingface.co/nex-agi/Nex-N2.5-Max) · [ModelScope](https://modelscope.cn/models/nex-agi/Nex-N2.5-Max) | 2 nodes · 16 × H200 total |
 
-We welcome developers and enterprises to integrate and try Nex-N2.5 and share their feedback.
+These are reference configurations, not minimum hardware requirements. Find all three model cards in the [Hugging Face collection](https://huggingface.co/collections/nex-agi/nex-n25), or jump to the [Docker deployment commands](#docker-deployment).
 
 ## Performance
 
@@ -154,19 +208,70 @@ The tables below compare **Nex-N2.5-mini**, **Nex-N2.5-Pro**, and **Nex-N2.5-Max
 
 ### Docker Deployment
 
-We also provide a prebuilt Docker image with our customized `sglang` fork preinstalled: **`nexagi/sglang:v0.5.18-nex-patch`**. The launch command is the same as above.
+Use the prebuilt image **`nexagi/sglang:v0.5.18-nex-patch`**, which includes our customized SGLang fork. The following examples assume a Linux GPU host with Docker and NVIDIA Container Toolkit configured.
+
+Download the model files, including the tokenizer, configuration, and matching `chat_template.jinja`. Replace `/path/to/your/model` with their absolute directory on the host. Docker mounts that directory at `/model`; all model and template paths in the container use `/model`.
+
+#### Nex-N2.5-mini
+
+Reference configuration: **1 node with 2 × H100**.
+
+```bash
+docker run --gpus all --shm-size 32g --ipc=host \
+  -p 30000:30000 \
+  -v /path/to/your/model:/model \
+  nexagi/sglang:v0.5.18-nex-patch \
+  python3 -m sglang.launch_server \
+    --model-path /model \
+    --tp 2 \
+    --host 0.0.0.0 --port 30000 \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_coder \
+    --chat-template /model/chat_template.jinja \
+    --mamba-scheduler-strategy extra_buffer
+```
+
+#### Nex-N2.5-Pro
+
+Reference configuration: **1 node with 8 × H100**. Pro weights are pending on Hugging Face as of 2026-09-09. Use this configuration once the weights and matching chat template are available, placing the template at `/path/to/your/model/chat_template.jinja` on the host.
+
+<details>
+<summary>Show Pro deployment command</summary>
+
+```bash
+docker run --gpus all --shm-size 32g --ipc=host \
+  -p 30000:30000 \
+  -v /path/to/your/model:/model \
+  nexagi/sglang:v0.5.18-nex-patch \
+  python3 -m sglang.launch_server \
+    --model-path /model \
+    --tp 8 \
+    --host 0.0.0.0 --port 30000 \
+    --reasoning-parser qwen3 \
+    --tool-call-parser qwen3_coder \
+    --chat-template /model/chat_template.jinja \
+    --mamba-scheduler-strategy extra_buffer
+```
+
+</details>
 
 #### Nex-N2.5-Max
 
+Reference configuration: **2 nodes with 16 × H200 total**. Place the model files on both nodes, set the node rank and head-node address, and run the command on each node. Both nodes must be able to reach the distributed initialization address.
+
+<details>
+<summary>Show Max multi-node deployment command</summary>
+
 ```bash
-# Multi-node (2 nodes, 16 x H200). Run the same command on every node with:
-#   <node-rank> = 0 on the head node, 1 on the other node
-#   <node0-ip>  = IP of the head node (reachable from all others)
+# Set these on each node before launching:
+export NODE_RANK=0  # 0 on the head node; 1 on the second node
+export MASTER_ADDR="192.0.2.10"  # Replace with the reachable IP of the head node
+
 docker run --gpus all --shm-size 32g --network host \
   -v /path/to/your/model:/model \
   nexagi/sglang:v0.5.18-nex-patch \
   python3 -m sglang.launch_server \
-    --model-path /path/to/your/model \
+    --model-path /model \
     --trust-remote-code \
     --host 0.0.0.0 \
     --port 8000 \
@@ -193,88 +298,52 @@ docker run --gpus all --shm-size 32g --network host \
     --cuda-graph-max-bs-decode 64 \
     --cuda-graph-backend-decode full \
     --cuda-graph-backend-prefill disabled \
-    --chat-template /path/to/nex-n2.5-max/chat_template.jinja \
+    --chat-template /model/chat_template.jinja \
     --reasoning-parser deepseek-r1 \
     --tool-call-parser qwen3_coder
 ```
 
-#### Nex-N2.5-Pro
+</details>
 
-Single node with 8 × H100:
+### Send a request to your server
 
-```bash
-docker run --gpus all --shm-size 32g --ipc=host \
-  -p 30000:30000 \
-  -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.18-nex-patch \
-  python3 -m sglang.launch_server \
-    --model-path /model \
-    --tp 8 \
-    --host 0.0.0.0 --port 30000 \
-    --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_coder \
-    --chat-template /path/to/nex-N2.5-Pro/chat-template.jinja \
-    --mamba-scheduler-strategy extra_buffer
-```
-
-#### Nex-N2.5-mini
-
-Single node with 2 × H100:
+The examples expose an OpenAI-compatible endpoint at `http://localhost:30000/v1` for mini and Pro, or `http://localhost:8000/v1` on the Max head node. After the server is ready, query `/v1/models` to find its served model ID:
 
 ```bash
-docker run --gpus all --shm-size 32g --ipc=host \
-  -p 30000:30000 \
-  -v /path/to/your/model:/model \
-  nexagi/sglang:v0.5.18-nex-patch \
-  python3 -m sglang.launch_server \
-    --model-path /model \
-    --tp 2 \
-    --host 0.0.0.0 --port 30000 \
-    --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_coder \
-    --chat-template /path/to/nex-N2.5-mini/chat-template.jinja \
-    --mamba-scheduler-strategy extra_buffer
+curl --fail-with-body http://localhost:30000/v1/models
 ```
+
+Set `model` to that ID and send Chat Completions requests to your server's `/v1/chat/completions` endpoint.
 
 ### Recommended Sampling Parameters
 
-For the best generation quality, we recommend the following sampling parameters:
+Our evaluations use the following settings, which we also recommend for generation:
 
-- `temperature`: 0.7
-- `top_p`: 0.95
-- `top_k`: 40
+| Parameter | Value |
+| --- | --- |
+| `temperature` | `0.7` |
+| `top_p` | `0.95` |
+| `top_k` | `40` |
 
 ### Thinking Modes
 
-Use `reasoning_effort` to control the thinking behavior of Nex-N2.5:
+**OpenRouter:** set `reasoning.effort` in your request, as in the [quickstart](#make-your-first-api-call). See OpenRouter's [reasoning controls](https://openrouter.ai/docs/guides/best-practices/reasoning-tokens) for gateway behavior.
 
-| `reasoning_effort` | Mode | Behavior |
+**Self-hosted models:** use the controls supported by the downloaded chat template. The published mini and Max templates have different interfaces:
+
+| Model / template | Control | Behavior |
 | --- | --- | --- |
-| `"none"` | Non-thinking | Respond directly without a reasoning trace. |
-| `"medium"` (default) | Adaptive thinking | Let the model decide whether and how much to think before responding. |
-| `"high"` | Thinking | Always enable thinking before responding. |
+| [mini](https://huggingface.co/nex-agi/Nex-N2.5-mini/blob/main/chat_template.jinja) | `reasoning_effort="none"` | Respond without a reasoning trace. |
+| mini | `reasoning_effort="medium"` (default) | Adaptive thinking. |
+| mini | `reasoning_effort="high"` | Always enable thinking. |
+| [Max](https://huggingface.co/nex-agi/Nex-N2.5-Max/blob/main/chat_template.jinja) | `enable_thinking` | Enable or disable thinking; defaults to `true`. |
+| Max | `thinking_mode` | Controls reasoning history: `interleaved` (default), `full`, or `drop`. |
 
-For adaptive thinking, set `reasoning_effort` to `"medium"` in your OpenAI-compatible Chat Completions request. Replace `<served-model-name>` with the model name exposed by your server:
-
-```json
-{
-  "model": "<served-model-name>",
-  "messages": [
-    {"role": "user", "content": "Explain how binary search works."}
-  ],
-  "reasoning_effort": "medium"
-}
-```
-
-The chat template uses `reasoning_effort`; parameters such as `enable_thinking` and `thinking_mode` require gateway-specific translation.
+Pass template controls through your serving layer's supported chat-template arguments. Do not assume that an OpenRouter request field maps directly to a self-hosted template. For Pro self-hosting, consult its matching template when released.
 
 ### Function Calling
 
-Nex-series models support robust function-calling capabilities. To enable function calling, add the `--tool-call-parser qwen3_coder` flag when launching the server:
-
-```bash
-python -m sglang.launch_server --model-path /path/to/your/model --tool-call-parser qwen3_coder
-```
+The deployment commands include `--tool-call-parser qwen3_coder`. Supply tool definitions in the request's `tools` field, execute returned tool calls in your application, and send the results back to the model to continue the task.
 
 ### Reasoning Parser
 
@@ -283,4 +352,10 @@ When the model produces a reasoning trace, configure SGLang to separate it from 
 - **Nex-N2.5-mini and Nex-N2.5-Pro:** `--reasoning-parser qwen3`
 - **Nex-N2.5-Max:** `--reasoning-parser deepseek-r1`
 
-The deployment commands above include the appropriate reasoning parser and `--tool-call-parser qwen3_coder`. The parser extracts reasoning content; use `reasoning_effort` to select the thinking mode.
+The deployment commands include the appropriate parser. Parsing a reasoning trace and selecting a thinking mode are separate settings.
+
+## Build with Nex-N2.5
+
+Using Nex-N2.5 in an agent, a research workflow, or a deployment? [Share an example or report an issue](https://github.com/nex-agi/Nex-N2.5/issues). Include the model, runtime, and steps needed to reproduce your result so others can try it.
+
+If this project is useful to you, **[give it a Star](https://github.com/nex-agi/Nex-N2.5)** and share the repository with someone building agents. Use GitHub's **Watch** menu if you would also like notifications about repository activity.
