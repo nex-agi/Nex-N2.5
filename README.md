@@ -1,5 +1,6 @@
 <div align="center">
-<img src="./figures/NEX_logo.svg" width="20%"/>
+<img src="./figures/NEX_logo.svg" width="20%"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="./figures/logo.svg" width="23%"/>
 </div>
 
 ---
